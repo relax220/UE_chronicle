@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% block content %}
+<ul>
+{% for record in records%}
+<li>
+    {{ record.title }}
+    <br>
+    {{ record.full_description|safe }}
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
