@@ -1,0 +1,34 @@
+{% load static %}
+<header class="mt-0">
+    <div class="px-3 py-2 text-bg-dark" style="border-radius: 10px 10px 0 0;">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="{% url "home" %}" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white
+                text-decoration-none">
+                <img width="64" src="{% static 'logos/Gerb_UE_invert_big.png' %}"/>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <li>
+                        <a href="{% url "home" %}" class="nav-link text-secondary">
+                        <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                            <use xlink:href="#home"></use>
+                        </svg>
+                        Главная
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link text-white">
+                        <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                            <use xlink:href="#speedometer2"></use>
+                        </svg>
+                        Добавить категорию
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</header>

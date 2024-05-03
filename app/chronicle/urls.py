@@ -3,5 +3,6 @@ from .views import RecordListView
 
 
 urlpatterns = [
-    path('', RecordListView.as_view())
+    path('', RecordListView.as_view(), name='home'),
+
 ]

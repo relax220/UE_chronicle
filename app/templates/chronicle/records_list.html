@@ -1,12 +1,26 @@
+
 {% extends 'main.html' %}
+{% load static %}
+
 {% block content %}
-<ul>
-{% for record in records%}
-<li>
-    {{ record.title }}
-    <br>
-    {{ record.full_description|safe }}
-</li>
-{% endfor %}
-</ul>
+    {% for record in records %}
+    <div class="card mb-3">
+        <div class="row">
+            {% if record.thumbnail %}
+            <div class="col-4">
+                <img src="{{ record.thumbnail.url }}" class="card-img-top" alt="{{ record.title }}">
+            </div>
+            {% endif %}
+            <div class="col-12">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="">{{ record.title }}</a></h5>
+                    <p class="card-text">{{ record.short_description|safe }}</p>
+                    <hr>
+                    <p class="card-text">{{ record.full_description|truncatechars:100|safe}}</p>
+
+                </div>
+            </div>
+        </div>
+      </div>
+    {% endfor %}
 {% endblock %}
