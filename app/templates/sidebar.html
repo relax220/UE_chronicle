@@ -1,44 +1,4 @@
-{% extends 'main.html' %}
 {% load static %}
-
-{% block content %}
-{% for record in records %}
-<div class="card mb-3">
-    <div class="row">
-        {% if record.thumbnail %}
-        <div class="col-4">
-            <img src="{{ record.thumbnail.url }}"  class="card-img-top" alt="{{ record.title }}" >
-        </div>
-        {% endif %}
-        <div class="col-8">
-            <div class="card-body">
-                <h5 class="card-title"><a href="{{ record.get_absolute_url }}">{{ record.title }}</a></h5>
-                <p class="card-text">{{ record.short_description|safe }}</p>
-                <hr>
-                <p class="card-text">{{ record.full_description|truncatechars:100|safe}}</p>
-            </div>
-        </div>
-    </div>
-    {% if record.tags_places.all %}
-    <div class="card-footer border-0">
-        {% for tag in record.tags_places.all %} {{ tag }} {% endfor %}
-    </div>
-    {% endif %}
-    {% if record.tags_people.all %}
-    <div class="card-footer border-0">
-        {% for tag in record.tags_people.all %} {{ tag }} {% endfor %}
-    </div>
-    {% endif %}
-    {% if record.date_happened %}
-    <div class="card-footer border-0">
-        {{record.date_happened}}
-    </div>
-    {% endif %}
-</div>
-{% endfor %}
-{% endblock %}
-
-{% block sidebar %}
 <div class="">
 
     <form action="{% url 'home' %}" method="get">
@@ -56,6 +16,7 @@
                            value="on" {% if tag.tag.name in parameters %} checked {% endif %}>
                     <label class="form-check-label" for="{{tag.tag}}flexCheckDefault">
                         {{tag.tag}}
+
                     </label>
                 </div>
                 {% endfor %}
@@ -103,9 +64,6 @@
         </div>
     </form>
 </div>
-{% endblock %}
-
 {% block script %}
 <script src="{% static 'custom/js/for_collapse.js' %}"></script>
 {% endblock %}
-

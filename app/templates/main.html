@@ -12,15 +12,13 @@
     <div class="container">
         {% include 'header.html' %}
         <div class="row">
-            <div class="col-8">
-
+            <div class="col-10">
+            {% include 'includes/messages.html' %}
             {% block content %}
-
             {% endblock %}
-
             </div>
-            <div class="col-4">
-
+            <div class="col-2">
+            {% block sidebar %} {% endblock %}
             </div>
         </div>
     </div>

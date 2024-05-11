@@ -47,8 +47,10 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
 
+    'mptt',
     'django_recaptcha',
     'django_ckeditor_5',
+    'taggit',
 
     'chronicle',
     'services',

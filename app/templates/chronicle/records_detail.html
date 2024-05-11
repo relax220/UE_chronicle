@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+{% load mptt_tags static %}
+
+{% block content %}
+<div class="card mb-3 border-0 shadow-sm">
+    <div class="row">
+        {% if record.thumbnail %}
+        <div class="col-4">
+            <img src="{{ record.thumbnail.url }}" class="card-img-top" alt="{{ record.title }}"/>
+        </div>
+        {% endif %}
+        <div class="col-8">
+            <div class="card-body">
+                <h5>{{ record.title }}</h5>
+                <p class="card-text">{{ record.full_description|safe }}</p>
+                Добавил: <a href="{{ record.author.profile.get_absolute_url }}">{{ record.author.username }}</a> /
+                <small>{{ record.time_create }}</small>
+                {% if record.author == request.user %}
+                <p><a href="{% url 'articles_update' record.slug %}">Редактировать</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if record.tags_people.all %}
+    <div class="card-footer border-0">
+        {% for tag in record.tags_people.all %} {{ tag }} {% endfor %}
+    </div>
+    {% endif %}
+    {% if record.tags_places.all %}
+    <div class="card-footer border-0">
+        {% for tag in record.tags_places.all %} {{ tag }} {% endfor %}
+    </div>
+    {% endif %}
+    {% if record.date_happened %}
+    <div class="card-footer border-0">
+        {{record.date_happened}}
+    </div>
+    {% endif %}
+
+</div>
+<div class="card border-0 col-8">
+    <h4 class="card-title">
+        Комментарии
+    </h4>
+    {% include 'chronicle/comments/comments_list.html' %}
+</div>
+{% endblock %}
+
+
